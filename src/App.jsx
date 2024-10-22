@@ -5,41 +5,30 @@ function App() {
   return (
     <>
 
-<div class="bg-primary" style={{ height: '100vh' }}>
-     <div class="formulario">
-          <h1>Inicio de sesion</h1>
-          <form method="post">
-
-            <div class="username">
-              <label>Nombre de usuario</label>
-              <input type="text" required></input>
+      <div className="login-container">
+        <div className="login-card">
+          <h2 className="text-center mb-4">Inicio de sesión</h2>
+          <form>
+            <div className="mb-3">
+              <label htmlFor="username" className="form-label">Nombre de usuario</label>
+              <input type="text" className="form-control" id="username" placeholder="Ingrese su usuario" />
             </div>
-
-            <div class="username">
-              <label>Contraseña</label>
-              <input type="password" required></input>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">Contraseña</label>
+              <input type="password" className="form-control" id="password" placeholder="Ingrese su contraseña" />
             </div>
-
-            <div class="recordar">¿Olvido su contraseña?</div>
-            <input type="submit" value="Iniciar"></input>
-            <div class="registrarse">
-              Quiero hacer el <a href="#">registro</a>
+            <div className="mb-3 text-end">
+              <a href="#" className="text-primary">¿Olvidó su contraseña?</a>
             </div>
-
+            <div className="d-grid">
+              <button type="submit" className="btn btn-primary-custom btn-lg">Iniciar</button>
+            </div>
+            <div className="mt-3 text-center">
+              <a href="#" className="text-primary">Quiero hacer el registro</a>
+            </div>
           </form>
         </div>
-</div>
-
-      <button type="button" class="btn btn-primary">Primary</button>
-<button type="button" class="btn btn-secondary">Secondary</button>
-<button type="button" class="btn btn-success">Success</button>
-<button type="button" class="btn btn-danger">Danger</button>
-<button type="button" class="btn btn-warning">Warning</button>
-<button type="button" class="btn btn-info">Info</button>
-<button type="button" class="btn btn-light">Light</button>
-<button type="button" class="btn btn-dark">Dark</button>
-
-<button type="button" class="btn btn-link">Link</button>
+      </div>
 
     </>
   )
