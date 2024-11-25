@@ -1,10 +1,14 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import Login from './login.jsx'
-import './index.css'
+// src/index.jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import Router from "./router.jsx";  // El componente que contiene las rutas
+import "./index.css";  // Estilos globales
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Login />
-  </StrictMode>,
-)
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
+  </React.StrictMode>
+);

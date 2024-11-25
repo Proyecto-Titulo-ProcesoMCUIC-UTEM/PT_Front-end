@@ -1,37 +1,65 @@
-
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
- 
+  const navigate = useNavigate();
+
+  const handleLogin = (event) => {
+    event.preventDefault(); // Evita la recarga de la página
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if (username === "admin" && password === "12345") {
+      alert("Inicio de sesión exitoso");
+      navigate("/web"); // Redirige a la página principal
+    } else {
+      alert("Usuario o contraseña incorrectos");
+    }
+  };
+
   return (
-    <>
-
-      <div className="login-container">
-        <div className="login-card">
-          <h2 className="text-center mb-4">Inicio de sesión</h2>
-          <form>
-            <div className="mb-3">
-              <label htmlFor="username" className="form-label">Nombre de usuario</label>
-              <input type="text" className="form-control" id="username" placeholder="Ingrese su usuario" />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="password" className="form-label">Contraseña</label>
-              <input type="password" className="form-control" id="password" placeholder="Ingrese su contraseña" />
-            </div>
-            <div className="mb-3 text-end">
-              <a href="#" className="text-primary">¿Olvidó su contraseña?</a>
-            </div>
-            <div className="d-grid">
-              <button type="submit" className="btn btn-primary-custom btn-lg">Iniciar</button>
-            </div>
-            <div className="mt-3 text-center">
-              <a href="#" className="text-primary">Quiero hacer el registro</a>
-            </div>
-          </form>
-        </div>
+    <div className="login-container">
+      <div className="login-card">
+        <h2 className="text-center mb-4">Inicio de sesión</h2>
+        {/* Formulario principal */}
+        <form onSubmit={handleLogin}>
+          <div className="mb-3">
+            <label htmlFor="username" className="form-label">
+              Nombre de usuario
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="username"
+              placeholder="Ingrese su usuario"
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">
+              Contraseña
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              placeholder="Ingrese su contraseña"
+            />
+          </div>
+          <div className="d-grid">
+            <button type="submit" className="btn btn-primary-custom btn-lg">
+              Iniciar
+            </button>
+          </div>
+          <div className="mt-3 text-center">
+            <a href="#" className="text-primary">
+              Quiero hacer el registro
+            </a>
+          </div>
+        </form>
       </div>
-
-    </>
-  )
+    </div>
+  );
 }
 
-export default Login
+export default Login;
