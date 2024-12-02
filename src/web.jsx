@@ -1,6 +1,17 @@
-import React from 'react';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Web() {
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Elimina cualquier dato de sesión almacenado, como un token
+    localStorage.removeItem("authToken");
+
+    // Redirige al login
+    navigate("/"); // Cambia "/" si tu ruta para Login es diferente
+  };
 
   return (
     <>
@@ -9,68 +20,55 @@ function Web() {
 
 {/*************************** Barra de navegador **********************************/}
 
-      <nav class="navbar navbar-expand-sm bg-body border-bottom fixed-top">
-        <div class="container-fluid">
-          <a class="navbar-brand ms-4 border-end pe-5" href="#">
-            <img src="img/logo_utem.png" alt="Logo" width="40" height="45" class="d-inline-block align-text-top"/>
+<nav className="navbar navbar-expand-sm bg-body border-bottom fixed-top">
+        <div className="container-fluid">
+          <a className="navbar-brand ms-4 border-end pe-5" href="#">
+            <img
+              src="img/logo_utem.png"
+              alt="Logo"
+              width="40"
+              height="45"
+              className="d-inline-block align-text-top"
+            />
           </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-
-            <ul class="navbar-nav">
-              <li class="nav-item ms-3">
-                <a class="nav-link active" aria-current="page" href="#">
-                  <img src="img/Admin-logo.png" alt="Logo" width="40" height="43" class="d-inline-block align-text-top mt-1"/>
-                  </a>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item ms-3">
+                <a className="nav-link active" aria-current="page" href="#">
+                  <img
+                    src="img/Admin-logo.png"
+                    alt="Logo"
+                    width="40"
+                    height="43"
+                    className="d-inline-block align-text-top mt-1"
+                  />
+                </a>
               </li>
-
               <div className="container ms-1">
-
                 <div className="row">
-
-                  <span class="navbar-text">
-                    Nombre Admin
-                  </span>
-
+                  <span className="navbar-text">Nombre Admin</span>
                 </div>
-
                 <div className="row">
-
-                  <span class="badge text-bg-warning">
-                    
-                    Admin
-
-                  </span>
-
-                </div>
-
-              </div>
-
-              <div className="container ms-3">
-              
-                <div className="row mt-2">
-                  <div className="col d-flex align-items-center">
-                    <img 
-                      src="img/correo.png" 
-                      alt="Logo" 
-                      width="35" 
-                      height="35" 
-                      className="d-inline-block align-text-top"
-                    />
-                    <li className="nav-item ms-1">
-                      <a className="nav-link" href="#" style={{ whiteSpace: 'nowrap' }}>Mi Correo</a>
-                    </li>
-                  </div>
+                  <span className="badge text-bg-warning">Admin</span>
                 </div>
               </div>
-              
-              <li class="nav-item ms-1 mt-2">
-                <a class="nav-link">Disabled</a>
+              <li className="nav-item ms-1 mt-2">
+                <button className="btn btn-danger" onClick={handleLogout}>
+                  Logout
+                </button>
               </li>
             </ul>
-            
           </div>
         </div>
       </nav>

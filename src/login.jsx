@@ -1,20 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
 
-  const handleLogin = (event) => {
-    event.preventDefault(); // Evita la recarga de la página
+  const [credentials, setCredentials] = useState({ username: "", password: "" });
+  const [error, setError] = useState("");
 
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setCredentials((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+
+    const { username, password } = credentials;
 
     if (username === "admin" && password === "12345") {
       alert("Inicio de sesión exitoso");
-      navigate("/web"); // Redirige a la página principal
+      localStorage.setItem("authToken", "fakeToken123");
+      navigate("/web"); // Redirige al componente principal
     } else {
-      alert("Usuario o contraseña incorrectos");
+      setError("Usuario o contraseña incorrectos");
     }
   };
 
@@ -22,7 +30,6 @@ function Login() {
     <div className="login-container">
       <div className="login-card">
         <h2 className="text-center mb-4">Inicio de sesión</h2>
-        {/* Formulario principal */}
         <form onSubmit={handleLogin}>
           <div className="mb-3">
             <label htmlFor="username" className="form-label">
@@ -32,7 +39,10 @@ function Login() {
               type="text"
               className="form-control"
               id="username"
+              name="username"
               placeholder="Ingrese su usuario"
+              value={credentials.username}
+              onChange={handleInputChange}
             />
           </div>
           <div className="mb-3">
@@ -43,9 +53,13 @@ function Login() {
               type="password"
               className="form-control"
               id="password"
+              name="password"
               placeholder="Ingrese su contraseña"
+              value={credentials.password}
+              onChange={handleInputChange}
             />
           </div>
+          {error && <div className="alert alert-danger">{error}</div>}
           <div className="d-grid">
             <button type="submit" className="btn btn-primary-custom btn-lg">
               Iniciar
