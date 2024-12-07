@@ -1,24 +1,35 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
-const Sidebar = () => {
+function Sidebar() {
   return (
-    <div className="sidebar bg-dark text-white vh-100 p-3" style={{ width: "250px" }}>
-      <nav className="nav flex-column">
-        <Link to="/crear" className="nav-link text-white">
-          Crear Plan
-        </Link>
-        
-        <Link to="/listado" className="nav-link text-white">
-          Listado
-        </Link>
-        
-        <Link to="/finalizados" className="nav-link text-white">
+    <div className="d-flex">
+      {/* Menú lateral */}
+      <nav className="bg-dark text-white vh-100 p-3" style={{ width: "250px" }}>
+       
+        <ul className="nav flex-column">
+          <li className="nav-item mb-2">
+            <Link className="nav-link text-white" to="detalles">
+              Crear Plan
+            </Link>
+          </li>
+          <li className="nav-item mb-2">
+            <Link className="nav-link text-white" to="listado">
+              Listado
+            </Link>
+            <Link className="nav-link text-white" to="/finalizados" >
           Finalizados
         </Link>
+          </li>
+        </ul>
       </nav>
+
+      {/* Contenido principal */}
+      <div className="p-4 w-100">
+        <Outlet /> {/* Muestra los componentes hijos */}
+      </div>
     </div>
   );
-};
+}
 
 export default Sidebar;
