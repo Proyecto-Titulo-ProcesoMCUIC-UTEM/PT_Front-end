@@ -28,13 +28,18 @@ if (!isset($_SESSION['usuario_id'])) {
                         <h5 class="card-title">Menú Principal</h5>
                         <div class="row">
                             <div class="col-md-4">
-                                <a href="../../src/admin/malla_curricular.php" class="btn btn-primary w-100 mb-2">
-                                    Gestionar Mallas Curriculares
+                                <a href="../../src/admin/carreras.php" class="btn btn-primary w-100 mb-2">
+                                    Gestionar Carreras
                                 </a>
                             </div>
                             <div class="col-md-4">
-                                <a href="../../src/admin/cursos.php" class="btn btn-secondary w-100 mb-2">
-                                    Gestionar Cursos
+                                <a href="../../src/admin/asignaturas.php" class="btn btn-secondary w-100 mb-2">
+                                    Gestionar Asignaturas
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="#" class="btn btn-secondary w-100 mb-2">
+                                    Gestionar Matrices de Coherencia Curricular
                                 </a>
                             </div>
                             <div class="col-md-4">
@@ -53,5 +58,17 @@ if (!isset($_SESSION['usuario_id'])) {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../public/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.querySelector('.btn-secondary[href="#"]').addEventListener('click', function(event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Información',
+                text: 'Este apartado está en desarrollo.',
+                icon: 'info',
+                confirmButtonText: 'Aceptar'
+            });
+        });
+    </script>
 </body>
 </html>
